@@ -1,14 +1,15 @@
 const express = require('express')
 const router = express.Router()
 const mongojs = require('mongojs')
+const URI = require('../routes/block');
 const db = mongojs(
-    'mongodb://anchitdhar:password123@ds317808.mlab.com:17808/todoapp',
+    process.env.MONGODB_URI || URI,
     ['tasks']
 )
 
 //List Tasks
 router.get('/tasks', function(req, res, next) {
-  db.tasks.find({}, {}}, function(err, tasks) {
+  db.tasks.find({}, {_id:1,title:1}, function(err, tasks) {
     if (err) {
       res.send(err)
     }
