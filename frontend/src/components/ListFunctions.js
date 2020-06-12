@@ -46,21 +46,3 @@ export const deleteItem = term => {
     });
 };
 
-export const updateItem = (term, id) => {
-  return axios
-    .put(
-      `http://localhost:5000/api/task/${id}`,
-      {
-        title: term,
-        isDone: false
-      },
-      {
-        headers: { "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*",
-             }
-      }
-    )
-    .then(function(response) {
-      console.log(response);
-    });
-};

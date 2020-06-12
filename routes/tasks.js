@@ -1,12 +1,12 @@
-var express = require('express')
-var router = express.Router()
-var mongojs = require('mongojs')
-var db = mongojs(
+const express = require('express')
+const router = express.Router()
+const mongojs = require('mongojs')
+const db = mongojs(
     'mongodb://anchitdhar:password123@ds317808.mlab.com:17808/todoapp',
     ['tasks']
 )
 
-// Get All Tasks
+//List Tasks
 router.get('/tasks', function(req, res, next) {
   db.tasks.find({}, {}}, function(err, tasks) {
     if (err) {
@@ -53,37 +53,5 @@ router.delete('/task/:id', function(req, res) {
   })
 })
 
-Update Task
-router.put('/task/:id', function(req, res, next) {
-  var task = req.body
-  var updTask = {}
 
-  if (task.isDone) {
-    updTask.isDone = task.isDone
-  }
-
-  if (task.title) {
-    updTask.title = task.title
-  }
-
-  if (!updTask) {
-    res.status(400)
-    res.json({
-      error: 'Bad Data'
-    })
-  } else {
-    db.tasks.update(
-      { _id: mongojs.ObjectId(req.params.id) },
-      updTask,
-      {},
-      function(err, task) {
-        if (err) {
-          res.send(err)
-        }
-        res.json(task)
-      }
-    )
-  }
-})
-
-module.exports = router
+module.exports = router;

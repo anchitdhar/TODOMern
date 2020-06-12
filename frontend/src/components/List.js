@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getList, addToList, deleteItem, updateItem } from "./ListFunctions";
+import { getList, addToList, deleteItem } from "./ListFunctions";
 
 class List extends Component {
   constructor() {
@@ -26,8 +26,6 @@ class List extends Component {
 
   getAll = () => {
     getList().then(data => {
-    console.log("ai yahan");
-      console.log(data);
       this.setState(
         {
           term: "",
@@ -46,22 +44,6 @@ class List extends Component {
       this.getAll();
     });
   };
-
-  // onEdit = (item, itemid, event) => {
-  //   event.preventDefault();
-  //   this.setState({
-  //     id: itemid,
-  //     term: item,
-  //   });
-  // };
-
-  // onUpdate = event => {
-  //   event.preventDefault();
-  //   updateItem(this.state.term, this.state.id).then(() => {
-  //     this.getAll();
-  //   });
-  // };
-
 
   onDelete = (val, e) => {
     e.preventDefault();
