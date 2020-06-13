@@ -2,9 +2,7 @@ import axios from "axios";
 
 
 export const getList = () => {
-    console.log(process.env.REACT_APP_FRONTEND_URL)
-    console.log(process.env.REACT_APP_FRONTEND_URL+"api/tasks")
-    console.log(process.env.REACT_APP_FRONTEND_URL == "https://todomernasmt.herokuapp.com/")
+
   return axios
     .get((process.env.REACT_APP_FRONTEND_URL + "api/tasks"), {
       headers: { "Content-Type": "application/json",
