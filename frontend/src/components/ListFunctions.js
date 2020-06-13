@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const getList = () => {
   return axios
-    .get("http://localhost:5000/api/tasks", {
+    .get(process.env.FRONTEND_URL || "http://localhost:5000/api/tasks", {
       headers: { "Content-Type": "application/json",
                 "Access-Control-Allow-Origin": "*",
              }
@@ -14,8 +14,7 @@ export const getList = () => {
 
 export const addToList = term => {
   return axios
-    .post(
-      "http://localhost:5000/api/task",
+    .post(process.env.FRONTEND_URL || "http://localhost:5000/api/task",
       {
         title: term,
         isDone: false
@@ -33,7 +32,7 @@ export const addToList = term => {
 
 export const deleteItem = term => {
   axios
-    .delete(`http://localhost:5000/api/task/${term}`, {
+    .delete(process.env.FRONTEND_URL ||`http://localhost:5000/api/task/${term}`, {
       headers: { "Content-Type": "application/json",
                 "Access-Control-Allow-Origin": "*",
              }
