@@ -1,6 +1,8 @@
 import axios from "axios";
 
 export const getList = () => {
+  console.log(process.env.FRONTEND_URL)
+  console.log(process.env.FRONTEND_URL + "/api/tasks")
   return axios
     .get((process.env.FRONTEND_URL + "/api/tasks") || "http://localhost:5000/api/tasks", {
       headers: { "Content-Type": "application/json",
@@ -13,7 +15,7 @@ export const getList = () => {
 };
 
 export const addToList = term => {
-  return axios
+  return axios 
     .post((process.env.FRONTEND_URL + "/api/task") || "http://localhost:5000/api/task",
       {
         title: term,
