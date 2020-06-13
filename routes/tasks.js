@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 const mongojs = require('mongojs')
-// const URI = require('../routes/block');
 const db = mongojs(
     process.env.MONGODB_URI || "localhost:27107/tododb",
      ['tasks']
